@@ -1,0 +1,32 @@
+
+<div class="card-wrapper active">
+	<div class="card" ng-class="{flipped: isFlipped}">
+		<div class="card-frontside">
+				<div class="card-title-wrapper">
+					<div class="card-title">{{title}}</div>
+				</div>
+				<div ng-if="!card.toLearn">
+					<button class="btn btn-default" ng-click="ok()">Ок</button>
+				</div>
+				<div ng-if="card.toLearn">
+					<button class="btn btn-success" ng-click="iKnowIt()">Знаю</button>
+					<button class="btn btn-danger" ng-click="iDontKnowIt()">Не знаю</button>
+				</div>
+			</div>
+			<div class="card-backside">
+				<div class="card-backside-text">
+					<div class="card-title">{{title}}</div>
+					<div class="card-description">{{description}}</div>
+				</div>
+				<div class="card-backside-panel">
+					<div ng-if="!card.toLearn">
+						<button class="btn btn-default" ng-click="close()">Ok</button>
+					</div>
+					<div ng-if="card.toLearn">
+						<button class="btn btn-default" ng-click="toRepeatNextCard()">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

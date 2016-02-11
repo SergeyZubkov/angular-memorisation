@@ -1,0 +1,9 @@
+
+		<ul class="stack" ng-controller="RepeatCardsCtrl">
+			<li ng-repeat='card in repeatCards' 
+				ng-class="{active: isActive(card), learned: $index < active}"
+				ng-controller='CardCtrl'>
+				<div ng-include="'tpls/card.html'">
+				</div>
+			</li>
+		</ul>

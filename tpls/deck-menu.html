@@ -1,0 +1,34 @@
+
+	<h1>{{deck.title}}</h1>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<a href="#/">
+				<div class="list-item-title">Назад к выбору колоды</div>
+			</a>
+		</li>
+		<li class="list-group-item">
+			<a href="#/deck/{{deck.id}}/create-card">
+				<div class="list-item-title">Создать карточку</div>
+			</a>
+		</li>
+		<li class="list-group-item">
+			<a ng-if='learnMode' href="#/deck/{{deck.id}}/repeat-card">
+				<div class="list-item-title">Учить карточку</div>
+			</a>
+			<a ng-if='!learnMode' class="disable">
+				<div class="list-item-title">Следущий повтор через</div>
+			</a>
+			<span countdown date="{{getNearCardToRepeatTime(deck.id)}}" on-complete="enableLearnMode()" class="badge"></span>
+		</li>
+		<li class="list-group-item">
+			<a href="#/deck/{{deck.id}}/cards">
+				<div class="list-item-title">Все карточки</div>
+			</a>
+			<span class="badge">{{numberCards}}</span>
+		</li>
+		<li class="list-group-item">
+			<a ng-click='deleteDeck()'>
+				<div class="list-item-title">Удалить колоду</div>
+			</a>
+		</li>
+	</ul>

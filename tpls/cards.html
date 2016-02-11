@@ -1,0 +1,14 @@
+
+	<h1>{{deck.title}}</h1>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<a href="#/deck/{{deck.id}}">Назад в меню колоды</a>
+		</li>
+		<li class="list-group-item" ng-repeat="card in deck.cards">
+			<a href="#/deck/{{deck.id}}/card/{{card.id}}">
+				<div class="list-item-title">{{card.title}}</div>
+			</a>
+			<span class="glyphicon glyphicon-trash" ng-click='removeCard(card.id)'></span>
+			<a href="#/deck/{{deck.id}}/edit-card/{{card.id}}" class='card-edit'><span class="glyphicon glyphicon-edit"></span></a>
+		</li>
+	</ul>
