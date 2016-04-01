@@ -2,7 +2,7 @@
 	<form name='createCardForm' novalidate>
 		<input type="text" ng-model='title' placeholder='заполните это поле' required>
 		<textarea name="description" id="" cols="30" rows="10" ng-model='description' placeholder='заполните это поле' required></textarea>
-		<button ng-show='createCardForm.$valid' class="btn btn-primary" ng-click='submit(title, description)'>Создать</button>
-		<button ng-show='createCardForm.$invalid' class="btn btn-default" ng-click='submit(title, description)' style="transition: 1s;">Назад</button>
+		<button ng-show='createCardForm.$valid' class="btn btn-primary" ng-click='submit(title, description)'>Ок</button>
+		<button ng-show='createCardForm.$invalid' class="btn btn-default" ng-click='submit(title, description)'>Назад</button>
 	</form>
 

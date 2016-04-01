@@ -5,9 +5,11 @@ angular.module('app',[
 	'controllers.DeckCtrl',
 	'controllers.DecksCtrl',
 	'controllers.EditCardCtrl',
+	'controllers.SettingsCtrl',
 	'directives.countdown',
+	'directives.editInPlace',
 	'services.dataService',
-	'utils.Utils'
+	'Filters'
 	])
 .config(function($routeProvider) {
 	$routeProvider
@@ -38,9 +40,18 @@ angular.module('app',[
 		.when('/deck/:deckId/repeat-card', {
 			templateUrl: 'tpls/stack.html',
 			controller: 'DeckCtrl'
+		})
+		.when('/deck/:deckId/settings', {
+			templateUrl: 'tpls/settings.html',
+			controller: 'SettingsCtrl'
 		}) 
 		.otherwise({redirectTo: '/'})
-});
+})
+.value('_', _)
+.value('jintervals', jintervals);
+
+jintervals.locale("ru_RU")
+
 
 
 

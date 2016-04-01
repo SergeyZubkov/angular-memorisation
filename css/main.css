@@ -8,10 +8,34 @@ body {
 	background-image: -webkit-linear-gradient(top,  #A1B0D0, #C7D4E7);
 	background-image: linear-gradient(to bottom,  #A1B0D0, #C7D4E7);
 	color: #5F6888;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid transparent;
+}
+
+body:before {
+	content: "";
+	background: url("../img/brain.jpg") no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0.1;
 }
 
 a {
 	color: #5F6888;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
 }
 [ng-click] {
 	cursor: pointer;
@@ -22,6 +46,7 @@ ng-include, [ng-include], .ng-includ {
 }
 a:hover {
 	text-decoration:none;
+	color: #5F6888;
 }
 
 #decks-list {
@@ -71,9 +96,11 @@ a:hover {
 }
 
 section {
+	position: relative;
+	z-index: 1;
 	width: 400px;
 	height: 450px;
-	margin: 50px auto;
+	margin: 200px auto;
 	background:  #E7E9EF;
 	padding: 20px;
 	border-radius: 5px;
@@ -188,6 +215,7 @@ textarea {
 	font-weight: bold;
 }
 .card-backside .card-description{
+	font-size: 18px;
 	padding: 30px 0 30px 0;
 }
 .card {
@@ -209,5 +237,83 @@ textarea {
 .active .card.flipped {
   -webkit-transform: rotateY( 180deg );
           transform: rotateY( 180deg );
+}
+
+.intervals {
+	list-style: none;
+}
+
+.intervals li {
+	border: 1px solid rgba(95, 104, 136, 0.18);
+}
+
+.intervals span:first-child{
+	float: left;
+	width: 50%;
+	text-align: center;
+	font-weight: normal;
+}
+
+.intervals .edit-in-place:nth-child(2) span {
+	float: right;
+	background: rgba(129, 141, 181, 0.18);
+	color: rgba(129, 141, 181, 0.91);
+	width: 50%;
+	text-align: center;
+	font-weight: normal;
+}
+
+.edit-in-place span {
+  cursor: pointer;
+  float: none;
+}
+
+.edit-in-place  form {
+  display: none;
+}
+
+
+.edit-in-place.active > form {
+  display: block;
+}
+
+
+
+.edit-in-place form label {
+	width: 20%;
+	float: left;
+
+}
+.edit-in-place form input, .edit-in-place form button, .edit-in-place form label {
+	float: left;
+	width: 25%;	
+	padding: 0;
+	margin: 0;
+	height: 20px;
+}
+
+.edit-in-place form {
+	display: none;
+}
+.edit-in-place.active form  {
+	display: block;
+	position: absolute;
+	top:0;
+	left: 0;
+}
+
+.intervals-item {
+	position: relative;
+	height: 22px;
+}
+
+.labels {
+	position: absolute;
+	width: 100%;
+	top: -22px;
+	left: 0;
+	height: 22px;
+	z-index: 1;
+	background: #fff;
 }
 

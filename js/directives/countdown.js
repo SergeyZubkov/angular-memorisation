@@ -1,6 +1,6 @@
 angular.module('directives.countdown', [])
 
-.directive('countdown', ['$interval',"$filter", "Util", function($interval, $filter, Util) {
+.directive('countdown', ['$interval',"$filter", "jintervals", function($interval, $filter, jintervals) {
 	return {
 		restrict: 'A',
 		scope: {
@@ -17,10 +17,10 @@ angular.module('directives.countdown', [])
 			learnOrNotLearn();
 
 			function learnOrNotLearn() {
-				var diff = Math.floor((future.getTime() - new Date().getTime())/1000);
-
+				var diff = Math.floor((future.getTime() - new Date().getTime()));
+				console.log(future)
 				if (diff > 0) {
-					return element.text(Util.dhms(diff))
+					return element.text(jintervals( parseInt(diff/1000) , "{G.} "))
 				} else {
 					$interval.cancel(interval);
 					scope.onComplete({string: 'учить'})

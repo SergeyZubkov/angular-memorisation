@@ -1,26 +1,11 @@
-angular.module('services.dataService', ['utils.Utils', 'utils.underscore','LocalStorageModule'])
+angular.module('services.dataService', ['LocalStorageModule'])
 
 .config(function(localStorageServiceProvider) {
   localStorageServiceProvider
     .setPrefix('memorisation')
 })
 
-.factory('Intervals', function() {
-  return [
-    {minute: 10},
-    {minute: 20},
-    {hour: 4},
-    {hour: 8},
-    {hour: 12},
-    {day: 1},
-    {day: 7},
-    {day: 14},
-    {month: 1},
-    {month: 2}
-  ]
-})
-
-.factory('DataService', function(localStorageService, _, Util, Intervals) {
+.factory('DataService', function(localStorageService, _) {
   var decks = localStorageService.get('decks');
   if(!decks) {
     decks = localStorageService.set('decks', [])
@@ -48,13 +33,12 @@ angular.module('services.dataService', ['utils.Utils', 'utils.underscore','Local
       var deck = ({
         title: title, 
         id: guid(),
-        cards: []
+        cards: [],
+        intervals: [[10, 20], [240, 480], [720, 1440], [10080, 20160], [20160, 40320]]
       });
 
       decks.push(deck);
       saveToStorage();
-
-
     },
     getDeck: function(id) {
       return _.findWhere(decks,{id: id})
@@ -116,27 +100,29 @@ angular.module('services.dataService', ['utils.Utils', 'utils.underscore','Local
       saveToStorage();
     },
     setTimeToRepeat: function(deckId, cardId, know) {
-      var card = _.findWhere(_.findWhere(decks,{id: deckId})
-          .cards, {id: cardId}),
+      var deck = _.findWhere(decks,{id: deckId});
+      var card = _.findWhere(deck.cards, {id: cardId}),
         interval,
-        type,
-        units,
-        timeRepeat;
-        card.countRepeat = card.countRepeat + (know ? 1 : 0);
-        interval = Intervals[card.countRepeat];
-        //interval one field obj
-        for (key in interval) {
-          type = key;
-          console.log(type)
-          units = interval[key];
-          console.log(units)
-          timeRepeat = Util.dateAdd(new Date(), type, units)
-          console.log('timeRepeat' + timeRepeat)
-        }
-      card.timeToRepeat = timeRepeat.toString();
+        modf;
+
+        modf = know ? 1 : 0;
+        console.log(deck)
+        interval = this.getIntervals(deck)[card.countRepeat][modf];
+        console.log(interval)
+
+      card.timeToRepeat = new Date(new Date().getTime()  + interval).toString();
       card.countRepeat++
-      console.log("card.countRepeat: " + card.countRepeat)
+      console.log("card.timeToRepeat: " + card.timeToRepeat)
       saveToStorage();
+    },
+    getIntervals: function(deck) {
+      //отдаются интервалы в миллисекундах
+        console.log(deck)
+        return deck.intervals.map(function(a) {return a.map(function(b) {return b*60000})})
+    },
+    setInterval: function(deck, level, nmb, value) {
+        deck.intervals[level][nmb] = value;
+        saveToStorage();
     }
   }
 

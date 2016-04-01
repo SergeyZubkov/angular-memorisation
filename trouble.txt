@@ -21,3 +21,28 @@
 
 
 Есть метод в контроллере который инициализурет дополнительные данные в скоуп и перенаправляет на другой роут с этим же самым контроллером. Получаеться, что дополнительные данные пропадут, поскольку контроллер переустановился.
+
+В каком формате лучше хранить интервалы??
+
+	.filter('dhmsFormat1', function($filter) {
+	    return function(input) {
+	        var arr, formatArr = [];
+	        input = input / 1000 -----------------------------------Странный шаг
+	        arr = $filter('dhms')(input).split(' ');
+	        console.log(input)
+
+	        arr.forEach(function(item) {
+	                if(formatArr.length === 2) {
+	                    return formatArr
+	                }
+	                if(parseInt(item) !== 0) {
+	                    formatArr.push(item)
+	                }
+	            });
+
+	        return formatArr.join(' ');
+	    }
+	    
+	});
+
+** при изменении интервала в настройках 

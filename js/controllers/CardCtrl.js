@@ -28,4 +28,5 @@ angular.module('controllers.CardCtrl',[])
 	$scope.toRepeatNextCard = function() {
 		$scope.selectActive()
 	}
+	
 });

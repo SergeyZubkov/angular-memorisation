@@ -1,0 +1,31 @@
+<h1>Настройки</h1>
+	<ul class="list-group" ng-controller='SettingsCtrl'>
+		<li class="list-group-item">
+			<a href="#/deck/{{deckId}}">
+				<div class="list-item-title">Назад</div>
+			</a>
+		</li>
+		<li class="list-group-item">
+				<a>
+					<div class="list-item-title" style='float: none;'>Интервалы</div>
+				<ul class='intervals'>
+					<li class="intervals-item" ng-repeat='stage in intervals  track by $index' ng-init="level = $index">
+							<div class='interval' edit-in-place ng-repeat='interval in stage  track by $index' ng-init="nmb= $index">
+								<span ng-click="edit()">{{interval | dhmsFormat1}}</span>
+								<form name="intervalForm">
+									<div class="labels">
+										<label for="days">дни</label>
+										<label for="hours">часы</label>
+										<label for="minutes">минуты</label>
+									</div>
+									<input id='days' type="number" min='0' max='100' ng-model="intervalForm.days" required></input>
+									<input id='hours' type="number" min='0' max='100' ng-model="intervalForm.hours" required></input>
+									<input id='minutes' type="number" min='0' max='100' ng-model="intervalForm.minutes" required></input>
+									<button type='submit' class='btn'>ok</button>
+								</form>
+							</div>
+					</li>	
+				</ul>
+				</a>
+		</li>
+	</ul>

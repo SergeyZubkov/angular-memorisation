@@ -13,7 +13,7 @@ angular.module('controllers.DeckCtrl', ['controllers.RepeatCardsCtrl'])
 
 
 	$scope.getNearCardToRepeatTime = function(deckId) {
-		
+		console.log(DataService.getNearCardToRepeat(deckId))
 		return $scope.deck.cards.length ? DataService.getNearCardToRepeat(deckId).timeToRepeat : '';
 	}
 	console.log($scope.getNearCardToRepeatTime($scope.deck.id))

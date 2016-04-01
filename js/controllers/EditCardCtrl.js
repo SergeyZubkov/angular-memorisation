@@ -6,8 +6,9 @@ angular.module('controllers.EditCardCtrl', [])
 	$scope.description = $scope.card.description;
 
 	$scope.submit = function(title,description) {
-		
-		DataService.editCard($routeParams.deckId, $routeParams.cardId ,{title: title, description: description});
+		if($scope.createCardForm.$valid) {
+			DataService.editCard($routeParams.deckId, $routeParams.cardId ,{title: title, description: description});
+		}
 		$scope.title = '';
 		$scope.description = '';
 		$window.history.back();
