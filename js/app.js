@@ -7,7 +7,7 @@ angular.module('app',[
 	'controllers.EditCardCtrl',
 	'controllers.SettingsCtrl',
 	'directives.countdown',
-	'directives.editInPlace',
+	'directives.editableTimeInterval',
 	'services.dataService',
 	'Filters'
 	])
@@ -44,7 +44,7 @@ angular.module('app',[
 		.when('/deck/:deckId/settings', {
 			templateUrl: 'tpls/settings.html',
 			controller: 'SettingsCtrl'
-		}) 
+		})
 		.otherwise({redirectTo: '/'})
 })
 .value('_', _)

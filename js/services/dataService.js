@@ -121,7 +121,8 @@ angular.module('services.dataService', ['LocalStorageModule'])
         return deck.intervals.map(function(a) {return a.map(function(b) {return b*60000})})
     },
     setInterval: function(deck, level, nmb, value) {
-        deck.intervals[level][nmb] = value;
+        // хранятся интервалы в минутах
+        deck.intervals[level][nmb] = value / 60000;
         saveToStorage();
     }
   }

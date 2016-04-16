@@ -239,81 +239,64 @@ textarea {
           transform: rotateY( 180deg );
 }
 
+/*----------  Settings  ----------*/
 .intervals {
 	list-style: none;
-}
-
-.intervals li {
-	border: 1px solid rgba(95, 104, 136, 0.18);
-}
-
-.intervals span:first-child{
-	float: left;
-	width: 50%;
-	text-align: center;
-	font-weight: normal;
-}
-
-.intervals .edit-in-place:nth-child(2) span {
-	float: right;
-	background: rgba(129, 141, 181, 0.18);
-	color: rgba(129, 141, 181, 0.91);
-	width: 50%;
-	text-align: center;
-	font-weight: normal;
-}
-
-.edit-in-place span {
-  cursor: pointer;
-  float: none;
-}
-
-.edit-in-place  form {
-  display: none;
-}
-
-
-.edit-in-place.active > form {
-  display: block;
-}
-
-
-
-.edit-in-place form label {
-	width: 20%;
-	float: left;
-
-}
-.edit-in-place form input, .edit-in-place form button, .edit-in-place form label {
-	float: left;
-	width: 25%;	
-	padding: 0;
-	margin: 0;
-	height: 20px;
-}
-
-.edit-in-place form {
-	display: none;
-}
-.edit-in-place.active form  {
-	display: block;
-	position: absolute;
-	top:0;
-	left: 0;
-}
-
-.intervals-item {
 	position: relative;
-	height: 22px;
+}
+.intervals li {
+	overflow: hidden;
+	text-align: center;
+	border-bottom:1px solid #DDD;
 }
 
-.labels {
+.intervals li .interval span {
+	display: block;
+	cursor: pointer;
+	margin: 3px;
+	transition: 0.3s;
+}
+
+.intervals li .interval span:hover {
+	box-shadow: 0 0 8px 0 #5F6888;
+}
+
+.intervals li .interval:first-child{
+	float: left;
+	width: 50%;												
+}
+
+.intervals li .interval:last-child{
+	float: right;
+	width: 50%;
+	background: #E7E9EF;												
+}
+
+.interval form {
 	position: absolute;
-	width: 100%;
-	top: -22px;
+	top: 0;
 	left: 0;
-	height: 22px;
-	z-index: 1;
 	background: #fff;
+	padding: 5px;
+	box-shadow: 0 0 8px 0 #5F6888;
 }
 
+.interval form .labels {
+	margin-right: 55px;
+}
+
+.interval form .labels label {
+	width: 33.33%;
+	text-align: center;
+}
+
+.interval form input, .interval form button{
+	display: inline-block;
+	width: 25%;
+	height: auto;
+	padding: 0;
+}
+
+.interval form button {
+
+}
