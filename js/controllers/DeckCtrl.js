@@ -3,7 +3,7 @@ angular.module('controllers.DeckCtrl', ['controllers.RepeatCardsCtrl'])
 .controller('DeckCtrl', function($scope, DataService, $routeParams, $location, $filter) {
 	$scope.deck = DataService.getDeck($routeParams.deckId);
 	$scope.learnMode = false;
-	if ($scope.deck.cards.length) {
+	if ($scope.deck.cards&&$scope.deck.cards.length) {
 		$scope.numberCards = $scope.deck.cards.length;
 		$scope.repeatCards = DataService.getRepeatCards($scope.deck.id);
 	} else {
