@@ -1,6 +1,6 @@
 angular.module('directives.countdown', [])
 
-.directive('countdown', ['$interval',"$filter", "jintervals", function($interval, $filter, jintervals) {
+.directive('countdown', ['$interval',"$filter", function($interval, $filter) {
 	return {
 		restrict: 'A',
 		scope: {
@@ -20,16 +20,16 @@ angular.module('directives.countdown', [])
 				var diff = Math.floor((future.getTime() - new Date().getTime()));
 				console.log(future)
 				if (diff > 0) {
-					return element.text(jintervals( parseInt(diff/1000) , "{G.} "))
+					return element.text( $filter('dhmsFormat1')(diff));
 				} else {
 					$interval.cancel(interval);
-					scope.onComplete({string: 'учить'})
-					return element.text('учить')
+					scope.onComplete({string: 'учить'});
+					return element.text('учить');
 				}
 			};
 
 			var interval = $interval( function() { 
-				learnOrNotLearn()
+				learnOrNotLearn();
 			}, 1000, this);
 
 			element.on('$destroy', function() {

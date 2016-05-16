@@ -47,7 +47,7 @@ angular.module('Filters', [])
 .filter('dhmsFormat1', function($filter) {
     return function(ms) {
         var arr, formatArr = [];
-        ms = ms /1000;
+        ms = parseInt(ms /1000);
         arr = $filter('dhms')(ms).split(' ');
         console.log(arr)
 

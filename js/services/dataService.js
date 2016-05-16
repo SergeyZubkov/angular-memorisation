@@ -8,7 +8,9 @@ angular.module('services.dataService', ['LocalStorageModule'])
 .factory('DataService', function(localStorageService, _) {
   var decks = localStorageService.get('decks');
   if(!decks) {
-    decks = localStorageService.set('decks', [])
+    console.log(localStorageService.set('decks', []))
+    localStorageService.set('decks', []);
+    decks = localStorageService.get('decks');
   }
   function saveToStorage(){
     localStorageService.set('decks',decks);

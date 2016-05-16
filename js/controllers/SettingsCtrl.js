@@ -1,6 +1,6 @@
 angular.module('controllers.SettingsCtrl', [])
 
-.controller('SettingsCtrl', function($scope, DataService, jintervals,  $routeParams) {
+.controller('SettingsCtrl', function($scope, DataService,  $routeParams) {
 	$scope.deck = DataService.getDeck($routeParams.deckId);
  	$scope.intervals = DataService.getIntervals($scope.deck);
  	$scope.deckId =  $routeParams.deckId;

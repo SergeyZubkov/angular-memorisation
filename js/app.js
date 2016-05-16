@@ -47,10 +47,8 @@ angular.module('app',[
 		})
 		.otherwise({redirectTo: '/'})
 })
-.value('_', _)
-.value('jintervals', jintervals);
+.value('_', _);
 
-jintervals.locale("ru_RU")
 
 
 
